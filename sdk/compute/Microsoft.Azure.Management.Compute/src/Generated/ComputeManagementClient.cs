@@ -202,6 +202,31 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; private set; }
 
         /// <summary>
+        /// Gets the IDisksOperations.
+        /// </summary>
+        public virtual IDisksOperations Disks { get; private set; }
+
+        /// <summary>
+        /// Gets the IDiskAccessesOperations.
+        /// </summary>
+        public virtual IDiskAccessesOperations DiskAccesses { get; private set; }
+
+        /// <summary>
+        /// Gets the IDiskEncryptionSetsOperations.
+        /// </summary>
+        public virtual IDiskEncryptionSetsOperations DiskEncryptionSets { get; private set; }
+
+        /// <summary>
+        /// Gets the IDiskRestorePointOperations.
+        /// </summary>
+        public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
+
+        /// <summary>
+        /// Gets the ISnapshotsOperations.
+        /// </summary>
+        public virtual ISnapshotsOperations Snapshots { get; private set; }
+
+        /// <summary>
         /// Gets the IResourceSkusOperations.
         /// </summary>
         public virtual IResourceSkusOperations ResourceSkus { get; private set; }
@@ -290,31 +315,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the ICloudServiceOperatingSystemsOperations.
         /// </summary>
         public virtual ICloudServiceOperatingSystemsOperations CloudServiceOperatingSystems { get; private set; }
-
-        /// <summary>
-        /// Gets the IDisksOperations.
-        /// </summary>
-        public virtual IDisksOperations Disks { get; private set; }
-
-        /// <summary>
-        /// Gets the ISnapshotsOperations.
-        /// </summary>
-        public virtual ISnapshotsOperations Snapshots { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskEncryptionSetsOperations.
-        /// </summary>
-        public virtual IDiskEncryptionSetsOperations DiskEncryptionSets { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskAccessesOperations.
-        /// </summary>
-        public virtual IDiskAccessesOperations DiskAccesses { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
@@ -583,6 +583,11 @@ namespace Microsoft.Azure.Management.Compute
             LogAnalytics = new LogAnalyticsOperations(this);
             VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
             VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
+            Disks = new DisksOperations(this);
+            DiskAccesses = new DiskAccessesOperations(this);
+            DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
+            DiskRestorePoint = new DiskRestorePointOperations(this);
+            Snapshots = new SnapshotsOperations(this);
             ResourceSkus = new ResourceSkusOperations(this);
             Galleries = new GalleriesOperations(this);
             GalleryImages = new GalleryImagesOperations(this);
@@ -601,11 +606,6 @@ namespace Microsoft.Azure.Management.Compute
             CloudServices = new CloudServicesOperations(this);
             CloudServicesUpdateDomain = new CloudServicesUpdateDomainOperations(this);
             CloudServiceOperatingSystems = new CloudServiceOperatingSystemsOperations(this);
-            Disks = new DisksOperations(this);
-            Snapshots = new SnapshotsOperations(this);
-            DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
-            DiskAccesses = new DiskAccessesOperations(this);
-            DiskRestorePoint = new DiskRestorePointOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
