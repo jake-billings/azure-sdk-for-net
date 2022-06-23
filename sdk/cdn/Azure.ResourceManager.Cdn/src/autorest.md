@@ -8,9 +8,12 @@ library-name: Cdn
 namespace: Azure.ResourceManager.Cdn
 title: CdnManagementClient
 require: https://github.com/Azure/azure-rest-api-specs/blob/236c7ce93e9bcb875e1fbe1db8602a3a159ee2ae/specification/cdn/resource-manager/readme.md
+output-folder: $(this-folder)/Generated
 clear-output-folder: true
 skip-csproj: true
-output-folder: Generated/
+modelerfour:
+  flatten-payloads: false
+
 operation-id-mappings:
   CdnEndpoint:
       profileName: Microsoft.Cdn/operationresults/profileresults
@@ -19,6 +22,14 @@ operation-id-mappings:
       profileName: Microsoft.Cdn/operationresults/profileresults
       endpointName: Microsoft.Cdn/operationresults/profileresults/endpointresults
       customDomainName: Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults
+
+format-by-name-rules:
+  'tenantId': 'uuid'
+  'etag': 'etag'
+  'location': 'azure-location'
+  '*Uri': 'Uri'
+  '*Uris': 'Uri'
+
 rename-rules:
   CPU: Cpu
   CPUs: Cpus
@@ -80,6 +91,10 @@ directive:
   - from: cdn.json
     where: $.definitions
     transform: >
+      $.SocketAddrMatchConditionParameters.properties.operator['x-ms-enum'].name = 'SocketAddressOperator';
+      $.RequestSchemeMatchConditionParameters.properties.operator['x-ms-enum'] = {
+          "name": "RequestSchemeOperator"
+        }
       for (var key in $) {
             if (key.endsWith('Parameters')) {
                 for (var property in $[key].properties) {
@@ -88,6 +103,9 @@ directive:
                         $[key]['x-ms-client-name'] = newKey;
                         if(key.endsWith('ActionParameters')) {
                              $[key]['x-ms-client-name'] = newKey + 'Properties';
+                        }
+                        if(key.endsWith('ConditionParameters')) {
+                            $[key].properties.operator['x-ms-client-name'] = $[key].properties.operator['x-ms-enum'].name;
                         }
                         $[key].properties.typeName['x-ms-client-name'] = 'type';
                         $[key].properties.typeName['x-ms-enum'] = {
@@ -126,6 +144,7 @@ directive:
       $.CheckNameAvailabilityInput['x-ms-client-name'] = 'CdnNameAvailabilityContent';
       $.CheckNameAvailabilityOutput['x-ms-client-name'] = 'CdnNameAvailabilityResult';
       $.ValidateProbeOutput['x-ms-client-name'] = 'ValidateProbeResult';
+      $.ResponseBasedOriginErrorDetectionParameters.properties.responseBasedDetectedErrorTypes['x-ms-client-name'] = 'responseBasedDetectedErrorType';
       $.ValidateCustomDomainOutput.properties.customDomainValidated['x-ms-client-name'] = 'isCustomDomainValid';
       $.CustomDomainProperties.properties.customHttpsParameters['x-ms-client-name'] = 'customDomainHttpsContent';
       $.CustomDomainProperties.properties.customHttpsProvisioningSubstate['x-ms-client-name'] = 'customHttpsAvailabilityState';
@@ -145,9 +164,6 @@ directive:
                                     "name": "FrontDoorEndpoints"
                                 }
                             ]
-      $.GeoFilter.properties.action['x-ms-enum'].name = 'GeoFilterAction';
-      $.ResponseBasedOriginErrorDetectionParameters.properties.responseBasedDetectedErrorTypes['x-ms-enum'].name = 'ResponseBasedDetectedErrorType';
-      $.SocketAddrMatchConditionParameters.properties.operator['x-ms-enum'].name = 'SocketAddressOperator';
       $.SocketAddrMatchConditionParameters.properties.typeName['x-ms-enum'].name = 'SocketAddressMatchConditionType';
       $.SocketAddrMatchConditionParameters.properties.typeName['x-ms-enum'].values[0].name = 'SocketAddressCondition';
       $.transform['x-ms-enum'].name = 'preTransformCategory';
@@ -225,6 +241,9 @@ directive:
   - from: afdx.json
     where: $.definitions
     transform: >
+      $.CustomerCertificateParameters.properties.expirationDate['format'] = 'date-time';
+      $.ManagedCertificateParameters.properties.expirationDate['format'] = 'date-time';
+      $.DomainValidationProperties.properties.expirationDate['format'] = 'date-time';
       $.ActivatedResourceReference.properties.id['x-ms-format'] = 'arm-id';
       $.Usage.properties.id['x-ms-format'] = 'arm-id';
       $.AfdPurgeParameters['x-ms-client-name'] = 'FrontDoorPurgeParameters';
@@ -250,6 +269,10 @@ directive:
       $.CheckEndpointNameAvailabilityInput['x-ms-client-name'] = 'EndpointNameAvailabilityContent';
       $.CheckEndpointNameAvailabilityOutput['x-ms-client-name'] = 'EndpointNameAvailabilityResult';
       $.SecurityPolicyWebApplicationFirewallParameters['x-ms-client-name'] = 'SecurityPolicyWebApplicationFirewall';
+      $.ActivatedResourceReference['x-ms-client-name'] = 'FrontDoorActivatedResourceInfo';
+      $.CustomerCertificateParameters.properties.expirationDate['x-ms-client-name'] = 'expiresDate';
+      $.ManagedCertificateParameters.properties.expirationDate['x-ms-client-name'] = 'expiresDate';
+      $.DomainValidationProperties.properties.expirationDate['x-ms-client-name'] = 'expiresDate';
       $.AFDDomainUpdatePropertiesParameters.properties.azureDnsZone['x-ms-client-name'] = 'dnsZone';
       $.AFDOriginUpdatePropertiesParameters.properties.azureOrigin['x-ms-client-name'] = 'origin';
       $.AFDOriginGroupUpdatePropertiesParameters.properties.trafficRestorationTimeToHealedOrNewEndpointsInMinutes['x-ms-client-name'] = 'trafficRestorationTimeInMinutes';
@@ -313,10 +336,10 @@ directive:
   - from: cdnwebapplicationfirewall.json
     where: $.definitions
     transform: >
-      $.CdnWebApplicationFirewallPolicy.properties.etag['x-ms-format'] = 'etag';
       $.CdnEndpoint['x-ms-client-name'] = 'CdnEndpointReference';
       $.CdnWebApplicationFirewallPolicyProperties.properties.rateLimitRules['x-ms-client-name'] = 'RateLimitSettings';
       $.CdnWebApplicationFirewallPolicyProperties.properties.customRules['x-ms-client-name'] = 'CustomSettings';
+      $.MatchCondition.properties.operator['x-ms-client-name'] = 'matchOperator';
       $.MatchCondition.properties.operator['x-ms-enum'].name = 'matchOperator';
       $.policySettings.properties.defaultCustomBlockResponseStatusCode['x-nullable'] = true;
   - remove-operation: Validate_Secret
