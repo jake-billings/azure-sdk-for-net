@@ -1059,7 +1059,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"KY4zE+02fUWgYK8lTU/Ez2pDiMoV5Vg0gKbEMNs3U4o10Y94Aorl+cN/l8LXnIdYupeAdHyePEoZ+AStXNSLIQ==\",\r\n  \"key2\": \"lk4sYKAymjJIKRuyFwUr7bUilD/Fu6zcBwvUkXDKW2GsJ0IXkxLy+8N6tXSz3tNr2xqkmFDLU+pu+AStUWaw2g==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"Sanitized\",\r\n  \"key2\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -2274,7 +2274,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"EAdROwHSqYWH47L79Vv47PdZ7RtGNCx+l+Yic12+Tqtn1K5ef9v8ygqaPnLH4hEwikZLE/VXBNJN+ASt+hfP4w==\",\r\n  \"key2\": \"BZiZaVHv6mQ03rybDLDPhABW8xD1HCjj38BEojsRFKp6G8MGRoKhA3PJGUzsPSty/9uW9rjT/wQk+AStm1b0pQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"Sanitized\",\r\n  \"key2\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {

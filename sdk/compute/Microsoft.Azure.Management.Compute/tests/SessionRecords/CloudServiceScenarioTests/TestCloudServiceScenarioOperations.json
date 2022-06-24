@@ -930,7 +930,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"iXNMz9W+8HEPXvOoj8YB8mQCezdZu51yfuVAR29rnIekI3O/99zlyowbL5zGt7Tq/ej0iSbI/emv+AStUO7Ryw==\",\r\n  \"key2\": \"I3XTZNi+KP8OEeuVtyLxRGuk3hLOpu948EGWhkRRMApTIFmS9P1Sij3h/KirLF/Yso9hRflELRdw+AStGEvaSw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"Sanitized\",\r\n  \"key2\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     },
     {
