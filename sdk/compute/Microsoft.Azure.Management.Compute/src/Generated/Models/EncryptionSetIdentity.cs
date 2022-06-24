@@ -94,5 +94,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         [JsonProperty(PropertyName = "tenantId")]
         public string TenantId { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the list of user identities associated with the disk
+        /// encryption set. The user identity dictionary key references will be
+        /// ARM resource ids in the form:
+        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// </summary>
+        [JsonProperty(PropertyName = "userAssignedIdentities")]
+        public IDictionary<string, UserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }
+
     }
 }

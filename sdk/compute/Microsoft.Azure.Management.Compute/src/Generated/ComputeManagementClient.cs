@@ -192,31 +192,6 @@ namespace Microsoft.Azure.Management.Compute
         public virtual ILogAnalyticsOperations LogAnalytics { get; private set; }
 
         /// <summary>
-        /// Gets the IDisksOperations.
-        /// </summary>
-        public virtual IDisksOperations Disks { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskAccessesOperations.
-        /// </summary>
-        public virtual IDiskAccessesOperations DiskAccesses { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskEncryptionSetsOperations.
-        /// </summary>
-        public virtual IDiskEncryptionSetsOperations DiskEncryptionSets { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
-
-        /// <summary>
-        /// Gets the ISnapshotsOperations.
-        /// </summary>
-        public virtual ISnapshotsOperations Snapshots { get; private set; }
-
-        /// <summary>
         /// Gets the IVirtualMachineRunCommandsOperations.
         /// </summary>
         public virtual IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; private set; }
@@ -606,11 +581,6 @@ namespace Microsoft.Azure.Management.Compute
             CapacityReservationGroups = new CapacityReservationGroupsOperations(this);
             CapacityReservations = new CapacityReservationsOperations(this);
             LogAnalytics = new LogAnalyticsOperations(this);
-            Disks = new DisksOperations(this);
-            DiskAccesses = new DiskAccessesOperations(this);
-            DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
-            DiskRestorePoint = new DiskRestorePointOperations(this);
-            Snapshots = new SnapshotsOperations(this);
             VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
             VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
             Disks = new DisksOperations(this);

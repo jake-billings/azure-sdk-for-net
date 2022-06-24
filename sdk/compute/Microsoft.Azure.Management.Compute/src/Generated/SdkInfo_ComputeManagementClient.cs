@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute
                 new Tuple<string, string, string>("Compute", "SharedGalleries", "2022-01-03"),
                 new Tuple<string, string, string>("Compute", "SharedGalleryImageVersions", "2022-01-03"),
                 new Tuple<string, string, string>("Compute", "SharedGalleryImages", "2022-01-03"),
-                new Tuple<string, string, string>("Compute", "Snapshots", "2021-12-01"),
+                new Tuple<string, string, string>("Compute", "Snapshots", "2022-03-02"),
                 new Tuple<string, string, string>("Compute", "SshPublicKeys", "2022-03-01"),
                 new Tuple<string, string, string>("Compute", "Usage", "2022-03-01"),
                 new Tuple<string, string, string>("Compute", "VirtualMachineExtensionImages", "2022-03-01"),
